@@ -1,0 +1,158 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f7fb;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  /* Formulário */
+  form.adoption-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .form-group-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .form-group-inline > div {
+    flex: 1;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+   
+
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  textarea {
+    resize: none;       /* Impede o redimensionamento */
+    overflow: auto;     /* Adiciona barra de rolagem se necessário */
+  }
+  
+  /* Botão */
+  .btn-primary {
+    width: 100%;
+    max-width: 320px;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Mensagens de alerta */
+  .flash-messages-form .alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .alert-success {
+    background-color: #d1f7d6;
+    color: #2e7d32;
+  }
+  
+  .alert-error,
+  .alert-danger {
+    background-color: #fcdede;
+    color: #c62828;
+  }
+  
+  /* Rodapé */
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 600px) {
+    .form-group-inline {
+      flex-direction: column;
+    }
+  
+    .container {
+      margin: 20px;
+      padding: 15px;
+    }
+  }
+  
+  .social-media{
+    background-color: rgb(162, 0, 255);
+  }

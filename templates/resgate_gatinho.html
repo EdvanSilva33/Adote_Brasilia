@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resgate Emocionante - Adote um Amigo</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/main.css") }}">
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+        }
+        .content-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .rescue-image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .rescue-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .rescue-text h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        .rescue-text p {
+            text-align: justify;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1em;
+        }
+        header .container, footer .container {
+             max-width: 1200px; /* Consistente com o index */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                 <a href="{{ url_for("index") }}"><img src="{{ url_for("static", filename="images/logo.png") if false else url_for("static", filename="images/logo.png") }}" alt="Logo Patinha Adote um Amigo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for("index") }}">Início</a></li>
+                    <li><a href="{{ url_for("index") }}#sobre">Sobre Nós</a></li>
+                    <li><a href="{{ url_for("como_ajudar_page") if false else "#" }}">Como Ajudar</a></li>
+                    <li><a href="{{ url_for("index") }}#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <!-- Adicionar barra de busca se for padrão do header -->
+        </div>
+    </header>
+
+    <main class="content-container">
+        <h1 style="text-align: center; margin-bottom: 30px;">A Incrível Jornada de Fagulha: Do Abandono ao Amor</h1>
+        
+        <div class="rescue-image-container">
+            <img src="{{ url_for("static", filename="images/placeholder_gatinho_resgatado.jpg") }}" alt="Gatinho resgatado Fagulha" class="rescue-image">
+        </div>
+
+        <div class="rescue-text">
+            <h2>Um Miado Tímido na Noite Fria</h2>
+            <p>Em uma viela escura e esquecida pela cidade, um som quase imperceptível cortava o silêncio gélido da madrugada. Era Fagulha, um pequeno gatinho de pelagem cinza e olhos assustados, encolhido sob uma caixa de papelão rasgada. O abandono havia deixado marcas profundas em seu corpinho frágil, mas em seus olhos ainda brilhava uma pequena chama de esperança, daí o nome Fagulha.</p>
+            <p>O resgate foi delicado. Cada movimento brusco o fazia tremer ainda mais. Com palavras suaves e um pouco de alimento oferecido com paciência, a barreira da desconfiança começou a ceder. Ao ser gentilmente envolvido em um cobertor macio, Fagulha relaxou pela primeira vez em dias, sentindo um calor que ia além do físico. Era o calor da compaixão.</p>
+            <p>Levado a um lar temporário seguro, Fagulha iniciou sua jornada de recuperação. Os primeiros dias foram de adaptação, mas logo a curiosidade natural dos felinos começou a aflorar. As brincadeiras com um simples novelo de lã se tornaram seu passatempo favorito, e os ronronares tímidos evoluíram para uma sinfonia de gratidão a cada carinho recebido. A transformação de Fagulha, de um gatinho assustado para um companheiro confiante e afetuoso, é um lembrete do poder do amor e da segunda chance que todos os animais merecem.</p>
+            <p>Hoje, Fagulha ilumina um lar definitivo com sua alegria contagiante. Sua história é um testemunho de que, mesmo nas situações mais sombrias, um ato de bondade pode reacender a chama da vida. Ao apoiar a causa animal, seja adotando, oferecendo lar temporário, doando ou conscientizando, você se torna um agente de transformação, ajudando a escrever finais felizes como o de Fagulha.</p>
+        </div>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <p>&copy; {{ current_year }} Adote um Amigo. Todos os direitos reservados.</p>
+            <div class="social-media">
+                <a href="#"><img src="{{ url_for("static", filename="images/social_facebook.png") }}" alt="Facebook"></a>
+                <a href="#"><img src="{{ url_for("static", filename="images/social_instagram.png")  }}" alt="Instagram"></a>
+                <a href="#"><img src="{{ url_for("static", filename="images/social_twitter.png") }}" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

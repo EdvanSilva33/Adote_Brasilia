@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Ajudar - Adote um Amigo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> <style>
+        /* Estilos específicos para o slideshow e conteúdo da página */
+        body {
+            font-family: 'Arial', sans-serif; /* Usar uma fonte consistente com o site */
+        }
+       
+        .content-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* Fundo branco para o conteúdo */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+        .mySlides img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -25px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.9);
+        }
+        .slide-text-content {
+            padding: 15px;
+            text-align: center; /* Centralizar texto do slide */
+            background-color: #fff;
+            border-radius: 0 0 8px 8px;
+        }
+        .slide-text-content h3 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        .slide-text-content p {
+            line-height: 1.6;
+            color: #555;
+            font-size: 1em;
+            text-align: justify;
+        }
+        .dots-container {
+            text-align:center;
+            padding: 15px 0;
+        }
+        .dot {
+            cursor:pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+        /* Adaptação do header e footer similar ao index.html se necessário */
+        /* Se houver um base.html, esta página deve estendê-lo */
+        header .container, footer .container {
+             max-width: 1200px; /* Consistente com o index */
+             
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') if false else url_for('static', filename='images/logo.png') }}" alt="Logo Patinha Adote um Amigo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Início</a></li>
+                    <li><a href="{{ url_for('index') }}#sobre">Sobre Nós</a></li>
+                    <li><a href="{{ url_for('como_ajudar_page') if false else '#' }}" class="active">Como Ajudar</a></li>
+                    <li><a href="{{ url_for('index') }}#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <!-- Adicionar barra de busca se for padrão do header -->
+        </div>
+    </header>
+
+    <main class="content-container">
+        <h1 style="text-align: center; margin-bottom: 30px;">Como Você Pode Ajudar Sem Precisar Adotar</h1>
+
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="{{ url_for('static', filename='images/placeholder_ajuda1.jpg') }}" alt="Forma de ajudar 1: Lar temporário">
+                <div class="slide-text-content">
+                    <h3>1. Seja um Lar Temporário Acolhedor</h3>
+                    <p>Oferecer um lar temporário é uma das formas mais impactantes de ajudar. Muitos animais resgatados precisam de um ambiente seguro e tranquilo para se recuperarem física e emocionalmente antes de encontrarem um lar definitivo. Como lar temporário, você oferece cuidados diários, socialização e muito amor, preparando o pet para a adoção. Os abrigos geralmente fornecem o suporte necessário, como alimentação e despesas veterinárias.</p>
+                </div>
+            </div>
+
+            <div class="mySlides">
+                <img src="{{ url_for('static', filename='images/placeholder_ajuda2.jpg') }}" alt="Forma de ajudar 2: Doações">
+                <div class="slide-text-content">
+                    <h3>2. Contribua com Doações Essenciais</h3>
+                    <p>Abrigos e ONGs de proteção animal dependem de doações para continuar seu trabalho vital. Você pode ajudar doando ração de boa qualidade, medicamentos, vacinas, produtos de limpeza, cobertores, brinquedos e outros suprimentos. Contribuições financeiras também são cruciais para cobrir custos com tratamentos veterinários, castrações e a manutenção geral das instalações. Cada doação, por menor que seja, faz uma grande diferença.</p>
+                </div>
+            </div>
+
+            <div class="mySlides">
+                <img src="{{ url_for('static', filename='images/persa.jpg') }}" alt="Forma de ajudar 3: Voluntariado e Divulgação">
+                <div class="slide-text-content">
+                    <h3>3. Dedique seu Tempo e Divulgue a Causa</h3>
+                    <p>Ser voluntário em um abrigo é uma experiência gratificante. Você pode ajudar com a limpeza, alimentação, passeios com os cães, socialização dos gatos e em eventos de adoção. Além disso, use suas redes sociais para divulgar animais que precisam de um lar, compartilhar informações sobre a importância da adoção responsável, da castração e do combate aos maus-tratos. Conscientizar as pessoas ao seu redor é um ato poderoso de ajuda.</p>
+                </div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <p>&copy; {{ current_year }} Adote um Amigo. Todos os direitos reservados.</p>
+            <div class="social-media">
+                <a href="#"><img src="{{ url_for('static', filename='images/social_facebook.png') }}" alt="Facebook"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/social_instagram.png') }}" alt="Instagram"></a>
+            <a href="#"><img src="{{ url_for('static', filename='images/social_twitter.png') }}" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (slides.length === 0) return;
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            if (dots.length > 0) {
+                 dots[slideIndex-1].className += " active";
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlides(slideIndex);
+        });
+    </script>
+
+</body>
+</html>
+

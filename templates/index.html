@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoção de Animais - Adote um Amigo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Patinha Adote um Amigo">
+               
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Início</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#como-ajudar">Como Ajudar</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <form class="search-bar" method="GET" action="{{ url_for('search') }}">
+                <input type="text" name="query" placeholder="Buscar animal..." value="{{ query if query }}">
+                <button type="submit">Q</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        {# Seção para exibir mensagens flash #}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="container flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {# Seção para exibir resultados da busca #}
+        {% if search_results is defined and search_results %}
+        <section id="search-results-section" class="gallery-section">
+            <div class="container">
+                <h2>Resultados da Busca por "{{ query }}"</h2>
+                <div class="gallery-grid">
+                    {% for animal in search_results %}
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename=animal.imagem) }}" alt="{{ animal.nome }}">
+                        <h3>{{ animal.nome }}</h3>
+                        <p><strong>Espécie:</strong> {{ animal.especie }}</p>
+                        <p><strong>Raça:</strong> {{ animal.raca }}</p>
+                        <p><strong>Idade:</strong> {{ animal.idade }}</p>
+                        <p>{{ animal.descricao }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% elif query %}
+         <section id="search-results-section" class="gallery-section">
+            <div class="container">
+                 <p>Nenhum resultado encontrado para "{{ query }}".</p>
+            </div>
+        </section>
+        {% endif %}
+
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-text">
+                    <h1>Encontre seu Novo Melhor Amigo de Quatro Patas!</h1>
+                    <p>Milhares de cães e gatos esperam por um lar amoroso. Adotar é um ato de amor que transforma vidas, a sua e a deles. Descubra como você pode fazer a diferença.</p>
+                    <a href="{{ url_for("adoption_form_page") }}" class="btn-primary">Quero Adotar!</a>
+                    <a href="{{ url_for('como_ajudar_page') }}" class="btn-secondary">Como Ajudar</a>
+                </div>
+                <div class="hero-image">
+                    <img src="{{ url_for('static', filename='images/Dog_cat.png') }}" alt="Cachorro feliz para adoção">
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="info-section">
+            <div class="container">
+                <div class="info-text">
+                    <h2>Nossa Paixão: Cuidar e Encontrar Lares Felizes</h2>
+                    <p>Somos dedicados a resgatar, cuidar e encontrar famílias responsáveis para animais abandonados. Conheça nosso trabalho e junte-se a nós nesta causa que salva vidas e espalha amor.</p>                   <a href="{{ url_for('resgate_gatinho_page') }}" class="btn-secondary">Saiba Mais Sobre Resgates</a>               </div>
+                <div class="info-image">
+                    <img src="{{ url_for('static', filename='images/Equipe-cuidando.jpg') }}" alt="Equipe cuidando de animais resgatados">
+                </div>
+            </div>
+        </section>
+
+        <section id="como-ajudar" class="gallery-section">
+            <div class="container">
+                <h2>Peludos Esperando por Você</h2>
+                <p>Veja alguns dos nossos cães e gatos que estão prontos para encher um novo lar de alegria e companheirismo. Cada um tem uma história única e muito amor para dar.</p>
+                <div class="gallery-grid">
+                    {% if animais %}
+                        {% for animal in animais %}
+                        <div class="gallery-item">
+                            <img src="{{ url_for('static', filename=animal.imagem) }}" alt="{{ animal.nome }}">
+                            <h3>{{ animal.nome }}</h3>
+                            <p>{{ animal.descricao }}</p>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Nenhum animal disponível para adoção no momento.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Sobre Nós</h3>
+                    <ul>
+                        <li><a href="#">Nossa História</a></li>
+                        <li><a href="#">Nossa Equipe</a></li>
+                        <li><a href="#">Transparência</a></li>
+                        <li><a href="#">Termos de Adoção</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+    <h3>Como Ajudar</h3>
+    <ul>
+        <li><a href="{{ url_for('static', filename='pdfs/processo_adocao.pdf') }}" target="_blank">Processo de Adoção</a></li>
+        <li><a href="{{ url_for('static', filename='pdfs/voluntario.pdf') }}" target="_blank">Seja um Voluntário</a></li>
+        <li><a href="{{ url_for('static', filename='pdfs/doacao.pdf') }}" target="_blank">Faça uma Doação</a></li>
+        <li><a href="{{ url_for('static', filename='pdfs/apadrinhamento.pdf') }}" target="_blank">Apadrinhe um Animal</a></li>
+        <li><a href="{{ url_for('static', filename='pdfs/parcerias.pdf') }}" target="_blank">Parcerias</a></li>
+    </ul>
+</div>
+
+                <div class="footer-column newsletter">
+                    <h3>Fique por Dentro!</h3>
+                    <p>Receba novidades sobre nossos animais, eventos de adoção e dicas para cuidar do seu pet.</p>
+                    <form method="POST" action="{{ url_for('subscribe_newsletter') }}">
+                        <input type="email" name="email" placeholder="Digite seu e-mail" required>
+                        <button type="submit">Inscrever</button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-media">
+                <a href="#"><img src="{{ url_for('static', filename='images/social_facebook.png') }}" alt="Facebook"></a>
+                <a href="#"><img src="{{ url_for('static', filename='images/social_instagram.png') }}" alt="Instagram"></a>
+                <a href="#"><img src="{{ url_for('static', filename='images/social_twitter.png') }}" alt="Twitter"></a>
+                <a href="#"><img src="{{ url_for('static', filename='images/social_whatsapp.png') }}" alt="WhatsApp"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
